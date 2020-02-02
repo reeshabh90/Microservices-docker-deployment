@@ -1,0 +1,38 @@
+version: '2.1'
+
+services:
+  discovery-server:
+    image: discovery-server
+    build:
+      context: .
+      dockerfile: discovery-server/Dockerfile
+    container_name: discovery-server
+    ports:
+      - 8761:8761
+  movie-catalog:
+    image: moviecatalog
+    build:
+      context: .
+      dockerfile: movie-catalog/Dockerfile
+    ports:
+      - 8083:8083
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-server:8761/eureka
+  movie-info:
+    image: movieinfo
+    build:
+      context: .
+      dockerfile: movie-info/Dockerfile
+    ports:
+      - 8081:8081
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-server:8761/eureka
+  rating-data:
+    image: ratingdata
+    build:
+      context: .
+      dockerfile: rating-data/Dockerfile
+    ports:
+      - 8082:8082
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-server:8761/eureka
