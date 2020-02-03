@@ -6,3 +6,6 @@ The File Structure contains Dockerfiles of respective Spring Microservices inclu
 
 
 Note: The main idea behind this architecture is: The respective Spring microservices can be developed independently. All one has to do is to clone the repositories with respective Dockerfile and run within a container using Docker Compose.
+
+
+reference: the mentioned github repo in my Dockerfiles for Spring microservices have been developed on the account of tutorials by Java Brains on Youtube.
